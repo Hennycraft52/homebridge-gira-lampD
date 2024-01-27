@@ -9,7 +9,7 @@ module.exports = function(homebridge) {
 
 function LampAccessory(log, config) {
     this.log = log;
-    this.lamp = new LampV2(config.ip, config.lampid, config.username, config.password, config.max, config.min);
+    this.lamp = new LampV2(config.ip, config.lampid, config.username, config.password);
 }
 
 LampAccessory.prototype = {
@@ -38,7 +38,7 @@ LampAccessory.prototype = {
     },
 
     setOn: function(value, callback) {
-        this.lamp.setStatus(value ? this.max : this.min).then(() => {
+        this.lamp.setStatus(value ? 100 : 0).then(() => {
             callback(null);
         }).catch(err => {
             callback(err);
@@ -47,19 +47,25 @@ LampAccessory.prototype = {
 
     getBrightness: function(callback) {
         this.lamp.getStatus().then(status => {
-            let brightness = Math.round((status - this.min) / (this.max - this.min) * 100);
-            callback(null, brightness);
+            if (isNaN(status)) {
+                callback(new Error('Status is NaN'));
+            } else {
+                callback(null, status);
+            }
         }).catch(err => {
             callback(err);
         });
     },
 
     setBrightness: function(value, callback) {
-        let status = Math.round(value / 100 * (this.max - this.min) + this.min);
-        this.lamp.setStatus(status).then(() => {
-            callback(null);
-        }).catch(err => {
-            callback(err);
-        });
+        if (isNaN(value)) {
+            callback(new Error('Value is NaN'));
+        } else {
+            this.lamp.setStatus(value).then(() => {
+                callback(null);
+            }).catch(err => {
+                callback(err);
+            });
+        }
     }
 };
