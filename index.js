@@ -45,7 +45,7 @@ LampAccessory.prototype = {
         callback(err);
     });
 },
-,
+
 
     getBrightness: function(callback) {
         this.lamp.getStatus().then(status => {
