@@ -1,0 +1,28 @@
+                                                    
+{
+  "name": "homebridge-gira-lampV2",
+  "version": "1.1.5",
+  "description": "Ein Homebridge-Plugin zur Integration von Gira HomeServer gesteuerten Lampen.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo Test Message! Plugin is funktionell!"
+  },
+  "keywords": ["homebridge", "homebridge-plugin", "gira", "homekit", "lamp"],
+  "author": "hennycraft",
+  "license": "MIT",
+  "dependencies": {
+    "axios": ">1.0.1"
+
+  },
+  "engines": {
+    "homebridge": ">=1.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hennycraft52/homebridge-gira-lampV2"
+  },
+  "bugs": {
+    "url": "https://github.com/Hennycraft52/homebridge-gira-lampV2/issues"
+  },
+  "homepage": "https://github.com/Hennycraft52/homebridge-gira-lampV2#readme"
+}
