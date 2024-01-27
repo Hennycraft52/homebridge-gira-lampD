@@ -1,7 +1,7 @@
                  
 {
   "name": "homebridge-gira-lampd",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Ein Plugin um Dimmbare Lampen in Homkit einzubinden",
   "main": "index.js",
   "directories": {
