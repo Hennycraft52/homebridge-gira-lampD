@@ -39,12 +39,13 @@ LampAccessory.prototype = {
 
 
     setOn: function(value, callback) {
-        this.lamp.setStatus(value ? 100 : 0).then(() => {
-            callback(null);
-        }).catch(err => {
-            callback(err);
-        });
-    },
+    this.lamp.setStatus(value ? 100 : 0).then(() => { // Setzen Sie den Status auf 100, wenn die Lampe eingeschaltet ist, und auf 0, wenn sie ausgeschaltet ist
+        callback(null);
+    }).catch(err => {
+        callback(err);
+    });
+},
+,
 
     getBrightness: function(callback) {
         this.lamp.getStatus().then(status => {
