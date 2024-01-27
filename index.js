@@ -1,7 +1,10 @@
+let Service, Characteristic;
 const LampV2 = require('./lib/lampv2');
 
 module.exports = function(homebridge) {
-    homebridge.registerAccessory('homebridge-gira-lampV2', 'LampV2', LampAccessory);
+    Service = homebridge.hap.Service;
+    Characteristic = homebridge.hap.Characteristic;
+    homebridge.registerAccessory('homebridge-gira-lampd', 'LampV2', LampAccessory);
 };
 
 function LampAccessory(log, config) {
